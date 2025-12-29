@@ -34,6 +34,18 @@ body{
 header{text-align:center;padding:20px;}
 header span{color:#00cfff}
 
+/* BUSCADOR */
+#buscador{
+  display:block;
+  margin:10px auto 20px auto;
+  padding:10px;
+  width:90%;
+  max-width:400px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+}
+
 /* MENU */
 .menu{
   display:flex;
@@ -144,6 +156,9 @@ h2{text-align:center;}
   <h1>iPhones <span>Brian</span></h1>
 </header>
 
+<!-- BUSCADOR -->
+<input type="text" id="buscador" placeholder="Buscar producto..." onkeyup="filtrarProductos()">
+
 <div class="menu">
   <button onclick="mostrar('iphones')"><i class="fa-brands fa-apple"></i><br>iPhones</button>
   <button onclick="mostrar('ps5')"><i class="fa-brands fa-playstation"></i><br>PS5</button>
@@ -155,7 +170,6 @@ h2{text-align:center;}
 <h2>iPhones</h2>
 
 <div class="grid">
-
 <!-- PAGINA 1 -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 <span class="usado">USADO</span><br>Batería 85% · 128GB
 <div class="precio">$230.000</div>
@@ -305,9 +319,22 @@ function mostrar(id){
   document.getElementById(id).classList.add("activa");
   if(id==="iphones"){paginaActual=1;mostrarPagina();}
 }
+
+// Función de búsqueda
+function filtrarProductos(){
+  const filtro = document.getElementById("buscador").value.toLowerCase();
+  document.querySelectorAll(".card").forEach(card=>{
+    const texto = card.innerText.toLowerCase();
+    if(texto.includes(filtro)){
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
 mostrarPagina();
 </script>
 
 </body>
 </html>
-
