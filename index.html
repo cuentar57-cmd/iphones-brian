@@ -12,20 +12,11 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   color:white;
-
-  /* FONDO NAVIDEÑO */
-  background: linear-gradient(
-    -45deg,
-    #0f2027,
-    #1c3b2e,
-    #7a1f1f,
-    #0f2027
-  );
+  background:linear-gradient(-45deg,#0b0b0b,#0e1a2b,#0b0b0b,#133b5c);
   background-size:400% 400%;
-  animation:fondoNavideno 18s ease infinite;
+  animation:fondo 18s ease infinite;
 }
-
-@keyframes fondoNavideno{
+@keyframes fondo{
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
@@ -50,7 +41,6 @@ body{
 @keyframes caer{
   to{transform:translateY(120vh);}
 }
-
 body>*{position:relative;z-index:1;}
 
 /* HEADER */
@@ -61,8 +51,8 @@ header h1 span{
   animation:pulse 1.5s infinite;
 }
 @keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.1)}
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.1);}
 }
 
 /* MENU */
@@ -70,8 +60,6 @@ header h1 span{
   display:flex;
   justify-content:space-around;
   padding:15px 0;
-  position:relative;
-  z-index:10;
 }
 .menu button{
   background:none;
@@ -84,12 +72,12 @@ header h1 span{
   animation:bounce 2s infinite;
 }
 @keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
 }
 
 /* SECCIONES */
-section{display:none;padding:15px;position:relative;z-index:5;}
+section{display:none;padding:15px;}
 section.activa{display:block;}
 h2{text-align:center;}
 
@@ -103,15 +91,15 @@ h2{text-align:center;}
   border:2px solid #00cfff;
   border-radius:16px;
   padding:15px;
-  background:rgba(20,20,20,.9);
+  background:rgba(15,15,15,.9);
   animation:brillo 2.5s infinite alternate;
 }
 @keyframes brillo{
-  from{box-shadow:0 0 5px #00cfff}
-  to{box-shadow:0 0 14px #00cfff}
+  from{box-shadow:0 0 6px #00cfff;}
+  to{box-shadow:0 0 16px #00cfff;}
 }
 .card i{font-size:30px;color:#f5f5f7;}
-
+.info{font-size:14px;margin:5px 0;}
 .boton{
   display:block;
   margin-top:10px;
@@ -145,8 +133,9 @@ h2{text-align:center;}
 
 <div class="nieve">
   <span style="left:10%;animation-duration:9s">❄️</span>
-  <span style="left:40%;animation-duration:11s">❄️</span>
-  <span style="left:70%;animation-duration:8s">❄️</span>
+  <span style="left:30%;animation-duration:12s">❄️</span>
+  <span style="left:55%;animation-duration:10s">❄️</span>
+  <span style="left:80%;animation-duration:8s">❄️</span>
 </div>
 
 <header>
@@ -164,23 +153,29 @@ h2{text-align:center;}
 <h2>iPhones</h2>
 
 <div class="grid">
-  <!-- Página 1 -->
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 11</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 11 Pro</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 12</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 12 Pro</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 13</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 13 Pro</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 14</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 14 Pro</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 15</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 15 Pro</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 11</h3><div class="info">🔋 Batería: 89%</div><div class="info">💾 64 / 128 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
 
-  <!-- Página 2 -->
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 16</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 16 Pro</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 16 Pro Max</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 17 Pro Max</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 11 Pro</h3><div class="info">🔋 Batería: 90%</div><div class="info">💾 64 / 256 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 12</h3><div class="info">🔋 Batería: 88%</div><div class="info">💾 64 / 128 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 12 Pro</h3><div class="info">🔋 Batería: 91%</div><div class="info">💾 128 / 256 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 13</h3><div class="info">🔋 Batería: 93%</div><div class="info">💾 128 / 256 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 13 Pro</h3><div class="info">🔋 Batería: 92%</div><div class="info">💾 128 / 256 / 512 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 14</h3><div class="info">🔋 Batería: 95%</div><div class="info">💾 128 / 256 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 14 Pro</h3><div class="info">🔋 Batería: 94%</div><div class="info">💾 128 / 256 / 512 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 15</h3><div class="info">🔋 Batería: 98%</div><div class="info">💾 128 / 256 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 15 Pro</h3><div class="info">🔋 Batería: 97%</div><div class="info">💾 128 / 256 / 512 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 16</h3><div class="info">🔋 Batería: 100%</div><div class="info">💾 256 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
+
+  <div class="card iphone"><i class="fa-brands fa-apple"></i><h3>iPhone 16 Pro</h3><div class="info">🔋 Batería: 100%</div><div class="info">💾 256 / 512 GB</div><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
 </div>
 
 <div class="paginacion">
@@ -190,64 +185,26 @@ h2{text-align:center;}
 </div>
 </section>
 
-<!-- PS5 -->
-<section id="ps5">
-<h2>PlayStation 5</h2>
-<div class="grid">
-  <div class="card"><i class="fa-brands fa-playstation"></i><h3>PS5 Standard</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card"><i class="fa-brands fa-playstation"></i><h3>PS5 Digital</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-</div>
-</section>
-
-<!-- AURIS -->
-<section id="auris">
-<h2>Auriculares</h2>
-<div class="grid">
-  <div class="card"><i class="fa-solid fa-headphones"></i><h3>AirPods Pro</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-  <div class="card"><i class="fa-solid fa-headphones"></i><h3>Auriculares Gamer</h3><a class="boton" href="https://wa.me/5493585079522">Consultar</a></div>
-</div>
-</section>
-
 <script>
-let paginaActual = 1;
-const porPagina = 10;
-const iphones = document.querySelectorAll(".iphone");
-const totalPaginas = Math.ceil(iphones.length / porPagina);
+let paginaActual=1;
+const porPagina=10;
+const iphones=document.querySelectorAll(".iphone");
+const totalPaginas=Math.ceil(iphones.length/porPagina);
 
 function mostrarPagina(){
   iphones.forEach((el,i)=>{
-    el.style.display =
-      i >= (paginaActual-1)*porPagina && i < paginaActual*porPagina
-      ? "block" : "none";
+    el.style.display=i>=(paginaActual-1)*porPagina && i<paginaActual*porPagina?"block":"none";
   });
-  document.getElementById("pagina").innerText =
-    "Página " + paginaActual + " de " + totalPaginas;
-
-  window.scrollTo({top:0,behavior:"smooth"});
+  document.getElementById("pagina").innerText="Página "+paginaActual+" de "+totalPaginas;
 }
-
-function siguiente(){
-  if(paginaActual < totalPaginas){
-    paginaActual++;
-    mostrarPagina();
-  }
-}
-function anterior(){
-  if(paginaActual > 1){
-    paginaActual--;
-    mostrarPagina();
-  }
-}
+function siguiente(){if(paginaActual<totalPaginas){paginaActual++;mostrarPagina();}}
+function anterior(){if(paginaActual>1){paginaActual--;mostrarPagina();}}
 
 function mostrar(id){
   document.querySelectorAll("section").forEach(s=>s.classList.remove("activa"));
   document.getElementById(id).classList.add("activa");
-  if(id === "iphones"){
-    paginaActual = 1;
-    mostrarPagina();
-  }
+  if(id==="iphones"){paginaActual=1;mostrarPagina();}
 }
-
 mostrarPagina();
 </script>
 
