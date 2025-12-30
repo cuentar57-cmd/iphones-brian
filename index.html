@@ -14,13 +14,24 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   color:white;
-  background:linear-gradient(-45deg,#000,#0b1d2a,#001,#1a002a);
-  background-size:400% 400%;
-  animation:fondo 15s ease infinite;
+  background:linear-gradient(
+    -45deg,
+    #000000,
+    #001f3f,
+    #003366,
+    #1a002a,
+    #002b36,
+    #000000
+  );
+  background-size:600% 600%;
+  animation:fondo 20s ease-in-out infinite;
 }
+
 @keyframes fondo{
   0%{background-position:0% 50%}
+  25%{background-position:50% 100%}
   50%{background-position:100% 50%}
+  75%{background-position:50% 0%}
   100%{background-position:0% 50%}
 }
 
@@ -279,3 +290,4 @@ mostrar();
 
 </body>
 </html>
+
