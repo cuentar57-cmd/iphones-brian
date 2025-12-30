@@ -12,9 +12,9 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   color:white;
-  background:linear-gradient(-45deg,#000,#001f3f,#1a002a,#002b36,#000);
+  background:linear-gradient(-45deg,#000,#001f3f,#003366,#1a002a,#000);
   background-size:600% 600%;
-  animation:fondo 20s infinite;
+  animation:fondo 20s ease infinite;
 }
 @keyframes fondo{
   0%{background-position:0% 50%}
@@ -23,116 +23,66 @@ body{
 }
 
 /* NIEVE */
-.nieve{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-}
-.nieve span{
-  position:absolute;
-  top:-10%;
-  animation:caer linear infinite;
-}
-@keyframes caer{to{transform:translateY(120vh);}}
+.nieve{position:fixed;inset:0;pointer-events:none;z-index:0}
+.nieve span{position:absolute;top:-10%;animation:caer linear infinite}
+@keyframes caer{to{transform:translateY(120vh)}}
 
 /* HEADER */
-header{
-  text-align:center;
-  padding:30px;
-  position:relative;
-  z-index:2;
-}
-.logo{
-  font-size:40px;
-  font-weight:bold;
-  animation:flotar 4s infinite;
-}
+header{text-align:center;padding:30px 10px;z-index:2;position:relative}
+.logo{font-size:38px;font-weight:bold;animation:flotar 4s ease-in-out infinite}
 .logo i{color:#00cfff}
-.sublogo{letter-spacing:6px;opacity:.7}
-@keyframes flotar{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
-  100%{transform:translateY(0)}
-}
+.sublogo{letter-spacing:6px;opacity:.8}
 
 /* BUSCADOR */
 #buscador{
-  display:block;
-  margin:10px auto 20px;
-  padding:12px;
-  width:90%;
-  max-width:420px;
-  border-radius:12px;
-  border:none;
+  display:block;margin:10px auto 20px;padding:12px;
+  width:90%;max-width:420px;border-radius:12px;border:none
 }
 
 /* GRID */
-section{padding:15px;position:relative;z-index:2}
-.grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:15px;
-}
+section{padding:15px;z-index:2;position:relative}
+.grid{display:grid;grid-template-columns:1fr;gap:15px}
 
 /* CARD */
 .card{
-  position:relative;
   border:2px solid #00cfff;
   border-radius:18px;
   padding:15px;
   background:rgba(0,0,0,.55);
+  position:relative;
   overflow:hidden;
-  animation:brillo 2s infinite alternate, flotar 4s infinite;
+  animation:brillo 2s infinite alternate, flotar 4s ease-in-out infinite;
 }
-@keyframes brillo{
-  from{box-shadow:0 0 6px #00cfff}
-  to{box-shadow:0 0 16px #00cfff}
-}
+@keyframes brillo{from{box-shadow:0 0 6px #00cfff}to{box-shadow:0 0 16px #00cfff}}
+@keyframes flotar{50%{transform:translateY(-6px)}}
+
 .card::before{
   content:"";
-  position:absolute;
-  inset:0;
+  position:absolute;inset:0;
   background:linear-gradient(120deg,transparent,rgba(255,255,255,.08),transparent);
   animation:luz 3.5s linear infinite;
 }
-@keyframes luz{
-  from{transform:translateX(-100%)}
-  to{transform:translateX(100%)}
-}
-.card i{color:#00cfff}
-.precio{font-size:18px;font-weight:bold;margin:6px 0}
-.usado{background:orange;color:black;padding:3px 8px;border-radius:8px;font-size:12px}
-.boton{
-  display:block;
-  margin-top:10px;
-  padding:10px;
-  background:#00cfff;
-  color:black;
-  text-align:center;
-  border-radius:10px;
-  font-weight:bold;
-  text-decoration:none;
-}
+@keyframes luz{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
 
-/* PAGINAS */
-.page{display:none}
-.page.active{display:grid}
+.card i{color:#00cfff;margin-right:6px}
+.usado{background:orange;color:black;padding:3px 8px;border-radius:8px;font-size:12px;margin-left:6px}
+.precio{font-size:18px;font-weight:bold;margin:6px 0}
+.boton{
+  display:block;margin-top:10px;padding:10px;
+  background:#00cfff;color:black;text-align:center;
+  border-radius:10px;font-weight:bold;text-decoration:none
+}
 
 /* PAGINACION */
-.pagination{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin:25px 0;
+.paginacion{
+  display:flex;justify-content:center;align-items:center;
+  gap:15px;margin:25px 0
 }
-.pagination button{
-  padding:10px 15px;
-  border:none;
-  border-radius:10px;
-  background:#222;
-  color:white;
+.paginacion button{
+  padding:10px 15px;border:none;border-radius:10px;
+  background:#222;color:white;cursor:pointer
 }
+#indicador{opacity:.8}
 </style>
 </head>
 
@@ -154,93 +104,106 @@ section{padding:15px;position:relative;z-index:2}
 <input id="buscador" placeholder="Buscar iPhone..." onkeyup="filtrar()">
 
 <section>
-<div class="grid">
+<div class="grid" id="productos">
 
-<!-- ================= PAGINA 1 ================= -->
-<div class="page active" id="p1">
+<!-- ================= TODOS LOS IPHONES ================= -->
+
+<!-- iPhone 11 -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 128GB <span class="usado">78%</span><div class="precio">190 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 128GB <span class="usado">81%</span><div class="precio">240 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 128GB <span class="usado">88%</span><div class="precio">270 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 128GB <span class="usado">91%</span><div class="precio">280 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<!-- iPhone 11 Pro / Max -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 Pro 64GB <span class="usado">80%</span><div class="precio">280 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 Pro Max 64GB <span class="usado">81%</span><div class="precio">300 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 Pro Max 64GB <span class="usado">100%</span><div class="precio">320 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
-</div>
 
-<!-- ================= PAGINA 2 ================= -->
-<div class="page" id="p2">
+<!-- iPhone 12 -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 64GB <span class="usado">78%</span><div class="precio">250 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 64GB <span class="usado">86%</span><div class="precio">290 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<!-- iPhone 12 Pro / Max -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro 128GB <span class="usado">100%</span><div class="precio">420 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro 256GB <span class="usado">80%</span><div class="precio">420 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro Max 128GB <span class="usado">80%</span><div class="precio">410 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro Max 128GB <span class="usado">91%</span><div class="precio">460 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro Max 256GB <span class="usado">78%</span><div class="precio">430 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro Max 256GB <span class="usado">84%</span><div class="precio">480 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
-</div>
 
-<!-- ================= PAGINA 3 ================= -->
-<div class="page" id="p3">
+<!-- iPhone 13 -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 128GB <span class="usado">78%</span><div class="precio">390 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 128GB <span class="usado">85%</span><div class="precio">410 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 128GB <span class="usado">88%</span><div class="precio">420 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 128GB <span class="usado">100%</span><div class="precio">450 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 Pro 128GB <span class="usado">78%</span><div class="precio">490 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 Pro 128GB <span class="usado">100%</span><div class="precio">550 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 Pro Max 128GB <span class="usado">81%</span><div class="precio">570 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 Pro Max 128GB <span class="usado">87%</span><div class="precio">600 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
-</div>
 
-<!-- ================= PAGINA 4 ================= -->
-<div class="page" id="p4">
+<!-- iPhone 14 -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 128GB <span class="usado">83%</span><div class="precio">450 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 128GB <span class="usado">86%</span><div class="precio">470 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Plus 128GB <span class="usado">81%</span><div class="precio">490 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Plus 128GB <span class="usado">84%</span><div class="precio">510 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Pro 128GB <span class="usado">87%</span><div class="precio">570 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Pro Max 128GB <span class="usado">87%</span><div class="precio">700 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<!-- iPhone 15 -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 128GB <span class="usado">90%</span><div class="precio">580 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 128GB <span class="usado">100%</span><div class="precio">630 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
-</div>
-
-<!-- ================= PAGINA 5 ================= -->
-<div class="page" id="p5">
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 Plus 128GB <span class="usado">92%</span><div class="precio">650 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 Pro 128GB <span class="usado">86%</span><div class="precio">720 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 Pro Max 256GB <span class="usado">85%</span><div class="precio">800 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<!-- iPhone 16 -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 128GB <span class="usado">94%</span><div class="precio">700 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 128GB <span class="usado">100%</span><div class="precio">750 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 Pro 128GB <span class="usado">94%</span><div class="precio">890 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 Pro Max 256GB <span class="usado">96%</span><div class="precio">1060 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<!-- iPhone 17 -->
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 17 Air 256GB NUEVO<div class="precio">1000 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 17 256GB NUEVO<div class="precio">1080 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 17 Pro 256GB NUEVO<div class="precio">1350 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 <div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 17 Pro Max 256GB NUEVO<div class="precio">1510 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
-</div>
 
 </div>
 
-<div class="pagination">
-<button onclick="show(1)">1</button>
-<button onclick="show(2)">2</button>
-<button onclick="show(3)">3</button>
-<button onclick="show(4)">4</button>
-<button onclick="show(5)">5</button>
+<div class="paginacion">
+  <button onclick="ant()">Anterior</button>
+  <span id="indicador"></span>
+  <button onclick="sig()">Siguiente</button>
 </div>
 
 </section>
 
 <script>
-function show(n){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById('p'+n).classList.add('active');
+let p=1;
+const por=8;
+const items=document.querySelectorAll(".iphone");
+const total=Math.ceil(items.length/por);
+
+function mostrar(){
+ items.forEach((e,i)=>{
+  e.style.display=(i>=(p-1)*por && i<p*por)?"block":"none";
+ });
+ indicador.innerText="Página "+p+" de "+total;
 }
+function sig(){if(p<total){p++;mostrar();}}
+function ant(){if(p>1){p--;mostrar();}}
+
 function filtrar(){
- let t=document.getElementById('buscador').value.toLowerCase();
- document.querySelectorAll('.card').forEach(c=>{
-  c.style.display=c.innerText.toLowerCase().includes(t)?"block":"none";
+ const f=buscador.value.toLowerCase();
+ items.forEach(e=>{
+  e.style.display=e.innerText.toLowerCase().includes(f)?"block":"none";
  });
 }
+
+mostrar();
 </script>
 
 </body>
