@@ -3,18 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iPhones Animados</title>
+<title>Apple Store</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
+
+/* ================= BODY + FONDO ================= */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:#0b0b0b;
   color:white;
+  background:linear-gradient(-45deg,#000,#0b1d2a,#001,#1a002a);
+  background-size:400% 400%;
+  animation:fondo 15s ease infinite;
+}
+@keyframes fondo{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-/* NIEVE */
+/* ================= NIEVE ================= */
 .nieve{
   position:fixed;
   inset:0;
@@ -29,90 +39,81 @@ body{
 }
 @keyframes caer{to{transform:translateY(120vh);}}
 
-/* HEADER ANIMADO */
-header{text-align:center;padding:20px;position:relative;overflow:hidden;}
-header .titulo{
-  font-size:2rem;
-  font-weight:bold;
-  display:inline-block;
-  animation:tituloAnim 2s infinite alternate;
+/* ================= HEADER ================= */
+header{
+  text-align:center;
+  padding:30px 10px;
+  position:relative;
+  z-index:2;
 }
-header .titulo i{color:white;margin:0 6px;}
-header .subtitulo{
-  display:block;
-  font-size:1.2rem;
+.logo{
+  font-size:38px;
+  font-weight:bold;
+  animation:flotar 4s ease-in-out infinite;
+}
+.logo i{
   color:#00cfff;
+}
+.sublogo{
+  letter-spacing:6px;
+  opacity:.8;
   margin-top:5px;
 }
-@keyframes tituloAnim{
-  0%{transform:scale(1) rotate(0deg);}
-  50%{transform:scale(1.1) rotate(5deg);}
-  100%{transform:scale(1) rotate(0deg);}
-}
 
-/* BUSCADOR */
+/* ================= BUSCADOR ================= */
 #buscador{
   display:block;
-  margin:10px auto 20px auto;
-  padding:10px;
+  margin:10px auto 20px;
+  padding:12px;
   width:90%;
-  max-width:400px;
-  border-radius:10px;
+  max-width:420px;
+  border-radius:12px;
   border:none;
   font-size:16px;
 }
 
-/* MENU */
-.menu{
-  display:flex;
-  justify-content:space-around;
-  padding:15px 0;
-}
-.menu button{
-  background:none;
-  border:none;
-  color:white;
-}
-.menu i{font-size:26px;color:#00cfff}
-
-/* SECCIONES */
-section{display:none;padding:15px;}
-section.activa{display:block;}
-h2{text-align:center;}
-
-/* PRODUCTOS */
+/* ================= SECCION ================= */
+section{padding:15px;position:relative;z-index:2}
 .grid{
   display:grid;
   grid-template-columns:1fr;
   gap:15px;
 }
-.card{
-  border:2px solid #00cfff;
-  border-radius:16px;
-  padding:15px;
-  background:#111;
-  position:relative;
-  overflow:hidden;
-}
-.card i{font-size:26px}
 
-/* ANIMACION INTERNA DE CADA CARD */
+/* ================= CARD PRODUCTO ================= */
+.card{
+  position:relative;
+  border:2px solid #00cfff;
+  border-radius:18px;
+  padding:15px;
+  background:rgba(0,0,0,.55);
+  overflow:hidden;
+  animation:brillo 2s infinite alternate, flotar 4s ease-in-out infinite;
+}
+@keyframes brillo{
+  from{box-shadow:0 0 6px #00cfff;}
+  to{box-shadow:0 0 16px #00cfff;}
+}
+@keyframes flotar{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+  100%{transform:translateY(0)}
+}
+
+/* luz interna */
 .card::before{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(120deg, rgba(0,255,255,0.1), rgba(0,255,255,0.3), rgba(0,255,255,0.1));
-  transform:translateX(-100%);
-  animation:brilloCard 2.5s infinite;
-  border-radius:16px;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.08),transparent);
+  animation:luz 3.5s linear infinite;
 }
-@keyframes brilloCard{
-  0%{transform:translateX(-100%);}
-  50%{transform:translateX(100%);}
-  100%{transform:translateX(100%);}
+@keyframes luz{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(100%)}
 }
 
-/* USADO */
+.card i{font-size:26px;color:#00cfff}
 .usado{
   background:orange;
   color:black;
@@ -120,20 +121,12 @@ h2{text-align:center;}
   border-radius:8px;
   font-size:12px;
   margin-left:6px;
-  position:relative;
-  z-index:1;
 }
-
-/* PRECIO */
 .precio{
   font-size:18px;
   font-weight:bold;
   margin:6px 0;
-  position:relative;
-  z-index:1;
 }
-
-/* BOTON */
 .boton{
   display:block;
   margin-top:10px;
@@ -144,16 +137,14 @@ h2{text-align:center;}
   border-radius:10px;
   font-weight:bold;
   text-decoration:none;
-  position:relative;
-  z-index:1;
 }
 
-/* PAGINACION */
+/* ================= PAGINACION ================= */
 .paginacion{
   display:flex;
   justify-content:center;
   gap:15px;
-  margin:20px 0;
+  margin:25px 0;
 }
 .paginacion button{
   padding:10px 15px;
@@ -162,133 +153,129 @@ h2{text-align:center;}
   background:#222;
   color:white;
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- NIEVE -->
 <div class="nieve">
   <span style="left:10%;animation-duration:9s">❄️</span>
-  <span style="left:40%;animation-duration:12s">❄️</span>
+  <span style="left:30%;animation-duration:12s">❄️</span>
+  <span style="left:50%;animation-duration:10s">❄️</span>
   <span style="left:70%;animation-duration:8s">❄️</span>
+  <span style="left:90%;animation-duration:11s">❄️</span>
 </div>
 
 <header>
-  <h1 class="titulo"><i class="fa-brands fa-apple"></i> TU</h1>
-  <span class="subtitulo">Apple</span>
+  <div class="logo">TU <i class="fa-brands fa-apple"></i></div>
+  <div class="sublogo">APPLE</div>
 </header>
 
-<input type="text" id="buscador" placeholder="Buscar producto..." onkeyup="filtrarProductos()">
+<input id="buscador" placeholder="Buscar iPhone..." onkeyup="filtrar()">
 
-<div class="menu">
-  <button onclick="mostrar('iphones')"><i class="fa-brands fa-apple"></i><br>iPhones</button>
-</div>
+<section>
+<div class="grid" id="productos">
 
-<section id="iphones" class="activa">
-<h2>iPhones</h2>
-<div class="grid">
+<!-- ================= TODOS LOS IPHONES ================= -->
+<!-- iPhone 11 -->
+<div class="card iphone">🍎 iPhone 11 128GB <span class="usado">78%</span><div class="precio">190 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 11 128GB <span class="usado">81%</span><div class="precio">240 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 11 128GB <span class="usado">88%</span><div class="precio">270 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 11 128GB <span class="usado">91%</span><div class="precio">280 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 
-<!-- PÁGINA 1 -->
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 128GB <span class="usado">78%</span><div class="precio">190 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2011%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 128GB <span class="usado">81%</span><div class="precio">240 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2011%20128GB%2081%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 128GB <span class="usado">88%</span><div class="precio">270 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2011%20128GB%2088%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 128GB <span class="usado">91%</span><div class="precio">280 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2011%20128GB%2091%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 Pro 64GB <span class="usado">80%</span><div class="precio">280 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2011%20Pro%2064GB%2080%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 Pro Max 64GB <span class="usado">81%</span><div class="precio">300 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2011%20Pro%20Max%2064GB%2081%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 11 Pro Max 64GB <span class="usado">100%</span><div class="precio">320 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2011%20Pro%20Max%2064GB%20100%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 64GB <span class="usado">78%</span><div class="precio">250 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2012%2064GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 64GB <span class="usado">86%</span><div class="precio">290 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2012%2064GB%2086%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro 128GB <span class="usado">100%</span><div class="precio">420 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2012%20Pro%20128GB%20100%" target="_blank">Consultar</a></div>
+<!-- iPhone 11 Pro / Pro Max -->
+<div class="card iphone">🍎 iPhone 11 Pro 64GB <span class="usado">80%</span><div class="precio">280 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 11 Pro Max 64GB <span class="usado">81%</span><div class="precio">300 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 11 Pro Max 64GB <span class="usado">100%</span><div class="precio">320 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 
-<!-- PÁGINA 2 -->
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro 256GB <span class="usado">80%</span><div class="precio">420 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2012%20Pro%20256GB%2080%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro Max 128GB <span class="usado">80%</span><div class="precio">410 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2012%20Pro%20Max%20128GB%2080%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro Max 128GB <span class="usado">91%</span><div class="precio">460 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2012%20Pro%20Max%20128GB%2091%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro Max 256GB <span class="usado">78%</span><div class="precio">430 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2012%20Pro%20Max%20256GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 12 Pro Max 256GB <span class="usado">84%</span><div class="precio">480 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2012%20Pro%20Max%20256GB%2084%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 128GB <span class="usado">78%</span><div class="precio">390 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2013%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 128GB <span class="usado">85%</span><div class="precio">410 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2013%20128GB%2085%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 128GB <span class="usado">88%</span><div class="precio">420 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2013%20128GB%2088%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 128GB <span class="usado">100%</span><div class="precio">450 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2013%20128GB%20100%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 256GB <span class="usado">85%</span><div class="precio">450 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2013%20256GB%2085%" target="_blank">Consultar</a></div>
+<!-- iPhone 12 -->
+<div class="card iphone">🍎 iPhone 12 64GB <span class="usado">78%</span><div class="precio">250 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 12 64GB <span class="usado">86%</span><div class="precio">290 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 
-<!-- PÁGINA 3 -->
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 Pro 128GB <span class="usado">78%</span><div class="precio">490 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2013%20Pro%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 Pro 128GB <span class="usado">100%</span><div class="precio">550 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2013%20Pro%20128GB%20100%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 Pro Max 128GB <span class="usado">81%</span><div class="precio">570 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2013%20Pro%20Max%20128GB%2081%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 13 Pro Max 128GB <span class="usado">87%</span><div class="precio">600 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2013%20Pro%20Max%20128GB%2087%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 128GB <span class="usado">83%</span><div class="precio">450 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2014%20128GB%2083%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 128GB <span class="usado">86%</span><div class="precio">470 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2014%20128GB%2086%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Plus 128GB <span class="usado">81%</span><div class="precio">490 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2014%20Plus%20128GB%2081%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Plus 128GB <span class="usado">88%</span><div class="precio">520 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2014%20Plus%20128GB%2088%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Pro 128GB <span class="usado">78%</span><div class="precio">600 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2014%20Pro%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Pro 128GB <span class="usado">82%</span><div class="precio">630 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2014%20Pro%20128GB%2082%" target="_blank">Consultar</a></div>
+<!-- iPhone 12 Pro / Max -->
+<div class="card iphone">🍎 iPhone 12 Pro 128GB <span class="usado">100%</span><div class="precio">420 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 12 Pro 256GB <span class="usado">80%</span><div class="precio">420 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 
-<!-- PÁGINA 4 -->
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Pro Max 128GB <span class="usado">81%</span><div class="precio">670 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2014%20Pro%20Max%20128GB%2081%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 14 Pro Max 128GB <span class="usado">88%</span><div class="precio">700 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2014%20Pro%20Max%20128GB%2088%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 128GB <span class="usado">78%</span><div class="precio">650 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2015%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 128GB <span class="usado">85%</span><div class="precio">680 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2015%20128GB%2085%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 Plus 128GB <span class="usado">80%</span><div class="precio">690 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2015%20Plus%20128GB%2080%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 Plus 128GB <span class="usado">87%</span><div class="precio">720 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2015%20Plus%20128GB%2087%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 Pro 128GB <span class="usado">78%</span><div class="precio">800 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2015%20Pro%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 Pro 128GB <span class="usado">82%</span><div class="precio">830 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2015%20Pro%20128GB%2082%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 Pro Max 128GB <span class="usado">81%</span><div class="precio">870 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2015%20Pro%20Max%20128GB%2081%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 15 Pro Max 128GB <span class="usado">88%</span><div class="precio">900 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2015%20Pro%20Max%20128GB%2088%" target="_blank">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 12 Pro Max 128GB <span class="usado">80%</span><div class="precio">410 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 12 Pro Max 128GB <span class="usado">91%</span><div class="precio">460 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 12 Pro Max 256GB <span class="usado">78%</span><div class="precio">430 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 12 Pro Max 256GB <span class="usado">84%</span><div class="precio">480 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 
-<!-- PÁGINA 5 -->
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 128GB <span class="usado">78%</span><div class="precio">950 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2016%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 128GB <span class="usado">85%</span><div class="precio">980 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2016%20128GB%2085%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 Pro 128GB <span class="usado">78%</span><div class="precio">1100 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2016%20Pro%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 Pro 128GB <span class="usado">82%</span><div class="precio">1130 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2016%20Pro%20128GB%2082%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 Pro Max 128GB <span class="usado">81%</span><div class="precio">1170 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2016%20Pro%20Max%20128GB%2081%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 16 Pro Max 128GB <span class="usado">88%</span><div class="precio">1200 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2016%20Pro%20Max%20128GB%2088%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 17 128GB <span class="usado">78%</span><div class="precio">1250 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2017%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 17 128GB <span class="usado">85%</span><div class="precio">1280 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2017%20128GB%2085%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 17 Pro 128GB <span class="usado">78%</span><div class="precio">1400 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2017%20Pro%20128GB%2078%" target="_blank">Consultar</a></div>
-<div class="card iphone"><i class="fa-brands fa-apple"></i> iPhone 17 Pro Max 128GB <span class="usado">81%</span><div class="precio">1500 USD</div><a class="boton" href="https://wa.me/543585079522?text=Hola,%20quiero%20consultar%20por%20iPhone%2017%20Pro%20Max%20128GB%2081%" target="_blank">Consultar</a></div>
+<!-- iPhone 13 -->
+<div class="card iphone">🍎 iPhone 13 128GB <span class="usado">78%</span><div class="precio">390 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 13 128GB <span class="usado">85%</span><div class="precio">410 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 13 128GB <span class="usado">88%</span><div class="precio">420 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 13 128GB <span class="usado">100%</span><div class="precio">450 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<div class="card iphone">🍎 iPhone 13 Pro 128GB <span class="usado">78%</span><div class="precio">490 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 13 Pro 128GB <span class="usado">100%</span><div class="precio">550 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<div class="card iphone">🍎 iPhone 13 Pro Max 128GB <span class="usado">81%</span><div class="precio">570 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 13 Pro Max 128GB <span class="usado">87%</span><div class="precio">600 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<!-- iPhone 14 -->
+<div class="card iphone">🍎 iPhone 14 128GB <span class="usado">83%</span><div class="precio">450 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 14 128GB <span class="usado">86%</span><div class="precio">470 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 14 Plus 128GB <span class="usado">81%</span><div class="precio">490 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 14 Plus 128GB <span class="usado">84%</span><div class="precio">510 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 14 Pro 128GB <span class="usado">87%</span><div class="precio">570 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 14 Pro Max 128GB <span class="usado">87%</span><div class="precio">700 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<!-- iPhone 15 -->
+<div class="card iphone">🍎 iPhone 15 128GB <span class="usado">90%</span><div class="precio">580 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 15 128GB <span class="usado">100%</span><div class="precio">630 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 15 Plus 128GB <span class="usado">92%</span><div class="precio">650 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 15 Pro 128GB <span class="usado">86%</span><div class="precio">720 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 15 Pro Max 256GB <span class="usado">85%</span><div class="precio">800 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<!-- iPhone 16 -->
+<div class="card iphone">🍎 iPhone 16 128GB <span class="usado">94%</span><div class="precio">700 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 16 128GB <span class="usado">100%</span><div class="precio">750 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 16 Pro 128GB <span class="usado">94%</span><div class="precio">890 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 16 Pro Max 256GB <span class="usado">96%</span><div class="precio">1060 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+
+<!-- iPhone 17 -->
+<div class="card iphone">🍎 iPhone 17 Air 256GB NUEVO<div class="precio">1000 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 17 256GB NUEVO<div class="precio">1080 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 17 Pro 256GB NUEVO<div class="precio">1350 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
+<div class="card iphone">🍎 iPhone 17 Pro Max 256GB NUEVO<div class="precio">1510 USD</div><a class="boton" href="https://wa.me/543585079522">Consultar</a></div>
 
 </div>
 
 <div class="paginacion">
-  <button onclick="anterior()">Anterior</button>
+  <button onclick="ant()">Anterior</button>
   <span id="pagina"></span>
-  <button onclick="siguiente()">Siguiente</button>
+  <button onclick="sig()">Siguiente</button>
 </div>
+
 </section>
 
 <script>
-let paginaActual = 1;
-const porPagina = 10;
-const iphones = document.querySelectorAll(".iphone");
-const totalPaginas = Math.ceil(iphones.length / porPagina);
+let p=1;
+const por=10;
+const items=document.querySelectorAll(".iphone");
+const total=Math.ceil(items.length/por);
 
-function mostrarPagina(){
-  iphones.forEach((el,i)=>{
-    el.style.display = i >= (paginaActual-1)*porPagina && i < paginaActual*porPagina ? "block" : "none";
-  });
-  document.getElementById("pagina").innerText = "Página " + paginaActual + " de " + totalPaginas;
+function mostrar(){
+ items.forEach((e,i)=>{
+  e.style.display=(i>=(p-1)*por && i<p*por)?"block":"none";
+ });
+ document.getElementById("pagina").innerText="Página "+p+" de "+total;
 }
-function siguiente(){if(paginaActual<totalPaginas){paginaActual++;mostrarPagina();}}
-function anterior(){if(paginaActual>1){paginaActual--;mostrarPagina();}}
+function sig(){if(p<total){p++;mostrar();}}
+function ant(){if(p>1){p--;mostrar();}}
 
-function mostrar(id){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("activa"));
-  document.getElementById(id).classList.add("activa");
-  if(id==="iphones"){paginaActual=1;mostrarPagina();}
-}
-
-function filtrarProductos(){
-  const filtro = document.getElementById("buscador").value.toLowerCase();
-  document.querySelectorAll(".card").forEach(card=>{
-    const texto = card.innerText.toLowerCase();
-    card.style.display = texto.includes(filtro) ? "block" : "none";
-  });
+function filtrar(){
+ const f=document.getElementById("buscador").value.toLowerCase();
+ items.forEach(e=>{
+  e.style.display=e.innerText.toLowerCase().includes(f)?"block":"none";
+ });
 }
 
-mostrarPagina();
+mostrar();
 </script>
 
 </body>
 </html>
-
